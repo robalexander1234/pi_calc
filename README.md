@@ -2,11 +2,11 @@
 
 A Rust learning project that computes digits of π using a spigot algorithm, maps them onto a 2D landscape, applies IIR low-pass filtering, and renders the result as an interactive 3D surface plot using Plotly.
 
-![PI Landscape](screenshot.png)
+![PI Sphere](pi_sphere.gif)
 
 ## Overview
 
-The digits of π, when laid out on a 2D grid and treated as height values, form a landscape of essentially random noise — reflecting the conjectured normality of π. This project visualizes that landscape after applying a 2D Butterworth low-pass filter to smooth the surface, producing the terrain-like plot shown above.
+The digits of π, when laid out on a 2D grid and treated as height values, form a landscape of essentially random noise — reflecting the conjectured normality of π. A 2D Butterworth low-pass filter is applied to smooth the surface, which is then mapped as a displacement onto a sphere, producing the planet-like visualization shown above.
 
 ## Modules
 
@@ -20,13 +20,14 @@ The digits of π, when laid out on a 2D grid and treated as height values, form 
 1. The spigot algorithm generates `NUM_ROWS × NUM_COLS` digits of π
 2. Digits are arranged into a 2D grid where each value (0–9) becomes a height value
 3. A 2nd-order Butterworth IIR low-pass filter is applied row-wise then column-wise
-4. The filtered landscape is rendered as an interactive 3D surface using Plotly (Viridis colormap)
+4. The filtered grid is mapped as a radial displacement onto a sphere using spherical coordinates
+5. The result is rendered as an interactive 3D surface using Plotly (Jet colormap)
 
 ## Dependencies
 
 ```toml
 [dependencies]
-plotly = "0.9"
+plotly = "0.12"
 ```
 
 ## Running
